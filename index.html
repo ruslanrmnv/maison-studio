@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MAISON Studio — Good hair, no guesswork</title>
+  <meta name="description" content="MAISON Studio — a small hair salon that respects your time. Exact durations, exact prices, no upsell in the chair.">
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400..500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="site-header__social" aria-label="Social links">
+      <a class="icon-btn" href="#" aria-label="MAISON Studio on Instagram">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <rect x="2.75" y="2.75" width="14.5" height="14.5" rx="4.5"></rect>
+          <circle cx="10" cy="10" r="3.6"></circle>
+          <circle cx="14.4" cy="5.6" r="0.9" fill="currentColor" stroke="none"></circle>
+        </svg>
+      </a>
+      <a class="icon-btn" href="#" aria-label="MAISON Studio on Facebook">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12.9 5.1h-1.6c-1.3 0-2.2.9-2.2 2.3V16.9M7.3 9.5h4.1"></path>
+        </svg>
+      </a>
+    </nav>
+
+    <a class="wordmark" href="/">MAISON<span aria-hidden="true">.</span></a>
+
+    <div class="site-header__actions">
+      <a class="contact-pill" href="#contact">
+        Contact Us
+        <span class="contact-pill__arrow" aria-hidden="true">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9L9 3"></path>
+            <path d="M4 3h5v5"></path>
+          </svg>
+        </span>
+      </a>
+      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
+        <svg class="menu-glyph" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <line class="menu-glyph__ln menu-glyph__ln--top" x1="3" y1="7.5" x2="13" y2="7.5"></line>
+          <line class="menu-glyph__ln menu-glyph__ln--bot" x1="7" y1="12.5" x2="17" y2="12.5"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero__inner">
+        <div class="hero__lead">
+          <p class="hero__eyebrow dot-label">&bull; Colour &amp; cuts &middot; Corell Lane</p>
+
+          <div class="hero__lead-foot">
+            <h1 class="hero__title">
+              <span class="hero__line hero__line--serif"><span class="hero__line-inner">Good hair,</span></span>
+              <span class="hero__line hero__line--sans"><span class="hero__line-inner">no guesswork.</span></span>
+            </h1>
+
+            <p class="hero__lead-note">Pick a service, get the time and the exact price back, then decide. That quote is the whole quote.</p>
+
+            <ul class="hero__tags" aria-label="What we do">
+              <li class="hero__tag">{Balayage}</li>
+              <li class="hero__tag">{Keratin}</li>
+              <li class="hero__tag">{Gloss &amp; Toner}</li>
+              <li class="hero__tag">{Precision Cuts}</li>
+            </ul>
+          </div>
+
+          <p class="hero__meta">Email or DM to book &mdash; same-day reply.</p>
+        </div>
+
+        <figure class="hero__media">
+          <img class="hero__photo"
+               src="assets/hero.webp"
+               alt="A colourist painting a warm highlight through a sectioned strand of hair with a tint brush"
+               width="1307" height="1682" fetchpriority="high">
+        </figure>
+      </div>
+    </section>
+
+    <section class="about" id="about" data-reveal-group>
+      <div class="about__inner">
+        <div class="about__body">
+          <p class="dot-label" data-reveal>&bull; About us</p>
+
+          <blockquote class="about__quote" data-reveal>
+            <p>Three chairs, one rule: your time is the appointment. You'll know the
+            <em>exact price</em> and the length in minutes before you sit down.
+            Rather not chat? Just say so.</p>
+          </blockquote>
+
+          <div class="about__badges" data-reveal>
+            <span class="badge">12 years open</span>
+            <span class="badge badge--dark badge--tilt">3 chairs &middot; no waiting</span>
+            <span class="badge">No upsell, ever</span>
+          </div>
+        </div>
+
+        <div class="about__cluster" aria-hidden="true">
+          <img class="about__float about__float--a"
+               src="assets/about-foils.webp"
+               alt="" width="1536" height="2048" loading="lazy" data-reveal>
+          <img class="about__float about__float--b"
+               src="assets/about-tools.webp"
+               alt="" width="1536" height="2048" loading="lazy" data-reveal>
+          <img class="about__float about__float--c"
+               src="assets/about-texture.webp"
+               alt="" width="1536" height="2048" loading="lazy" data-reveal>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="services" data-reveal-group>
+      <div class="services__inner">
+        <header class="services__head">
+          <div class="services__heading">
+            <p class="dot-label dot-label--dark" data-reveal>&bull; Services</p>
+            <h2 class="section-title" data-reveal>Our <em>Services</em></h2>
+          </div>
+          <p class="services__note" data-reveal>Every price here is the price. The minutes are real minutes &mdash; a 165-minute balayage takes 165 minutes, booked to the clock. Nothing new gets pitched once you're sitting down.</p>
+        </header>
+
+        <ul class="services__list">
+          <li class="service" data-reveal>
+            <a class="service__row" href="#contact">
+              <span class="service__fill" aria-hidden="true"><img src="assets/service-01-cut.webp" alt="" width="1536" height="2048" loading="lazy"></span>
+              <span class="service__num">(01)</span>
+              <span class="service__name">Precision Cut</span>
+              <span class="service__meta">60 min &mdash; from $75</span>
+              <span class="service__arrow" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15L15 5"></path><path d="M6 5h9v9"></path></svg>
+              </span>
+            </a>
+          </li>
+          <li class="service" data-reveal>
+            <a class="service__row" href="#contact">
+              <span class="service__fill" aria-hidden="true"><img src="assets/service-02-balayage.webp" alt="" width="1536" height="2048" loading="lazy"></span>
+              <span class="service__num">(02)</span>
+              <span class="service__name">Balayage</span>
+              <span class="service__meta">165 min &mdash; from $190</span>
+              <span class="service__arrow" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15L15 5"></path><path d="M6 5h9v9"></path></svg>
+              </span>
+            </a>
+          </li>
+          <li class="service" data-reveal>
+            <a class="service__row" href="#contact">
+              <span class="service__fill" aria-hidden="true"><img src="assets/service-03-gloss.webp" alt="" width="1536" height="2048" loading="lazy"></span>
+              <span class="service__num">(03)</span>
+              <span class="service__name">Gloss &amp; Toner</span>
+              <span class="service__meta">40 min &mdash; from $55</span>
+              <span class="service__arrow" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15L15 5"></path><path d="M6 5h9v9"></path></svg>
+              </span>
+            </a>
+          </li>
+          <li class="service" data-reveal>
+            <a class="service__row" href="#contact">
+              <span class="service__fill" aria-hidden="true"><img src="assets/service-04-keratin.webp" alt="" width="1536" height="2048" loading="lazy"></span>
+              <span class="service__num">(04)</span>
+              <span class="service__name">Keratin Smoothing</span>
+              <span class="service__meta">120 min &mdash; from $170</span>
+              <span class="service__arrow" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15L15 5"></path><path d="M6 5h9v9"></path></svg>
+              </span>
+            </a>
+          </li>
+          <li class="service" data-reveal>
+            <a class="service__row" href="#contact">
+              <span class="service__fill" aria-hidden="true"><img src="assets/service-05-root-color.webp" alt="" width="1536" height="2048" loading="lazy"></span>
+              <span class="service__num">(05)</span>
+              <span class="service__name">Root Colour</span>
+              <span class="service__meta">90 min &mdash; from $120</span>
+              <span class="service__arrow" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15L15 5"></path><path d="M6 5h9v9"></path></svg>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="results" id="results" data-reveal-group>
+      <div class="results__inner" data-gallery>
+        <header class="results__head">
+          <div class="results__heading">
+            <p class="dot-label" data-reveal>&bull; Before &amp; after</p>
+            <h2 class="section-title" data-reveal>See the <em>Results</em></h2>
+          </div>
+          <p class="results__note" data-reveal>Three services, three real appointments. Pick one, then drag the handle to see where it started.</p>
+        </header>
+
+        <div class="results__switch" role="group" aria-label="Choose an example to compare" data-reveal>
+          <button class="results__tab" type="button" aria-pressed="true"
+                  data-example
+                  data-before="assets/results-balayage-before.webp"
+                  data-before-alt="A client before her appointment — long hair grown out to a flat, dry, undone blonde"
+                  data-after="assets/results-balayage-after.webp"
+                  data-after-alt="The same client after a balayage — a darker base with soft blonde highlights, smoothed into a glossy blowout"
+                  data-caption="Balayage &middot; 165 min &middot; one appointment">
+            Balayage
+          </button>
+          <button class="results__tab" type="button" aria-pressed="false"
+                  data-example
+                  data-before="assets/results-color-before.webp"
+                  data-before-alt="A client before her appointment — faded, uneven copper, dry and frizzy through the ends"
+                  data-after="assets/results-color-after.webp"
+                  data-after-alt="The same client after a colour correction — an even, glossy copper from root to tip"
+                  data-caption="Colour correction &middot; ~180 min &middot; one sitting">
+            Colour correction
+          </button>
+          <button class="results__tab" type="button" aria-pressed="false"
+                  data-example
+                  data-before="assets/results-cut-before.webp"
+                  data-before-alt="A client before her appointment — long hair, dry and grown out past the shoulders"
+                  data-after="assets/results-cut-after.webp"
+                  data-after-alt="The same client after a precision cut — a sharp, glossy chin-length bob"
+                  data-caption="Precision cut &middot; 60 min &middot; one appointment">
+            Precision cut
+          </button>
+        </div>
+
+        <figure class="results__figure" data-reveal>
+          <div class="compare" data-compare style="--pos: 58%">
+            <img class="compare__img compare__img--after"
+                 src="assets/results-balayage-after.webp"
+                 alt="A client after a balayage — a darker base with soft blonde highlights, smoothed into a glossy blowout"
+                 width="1467" height="1956" loading="lazy">
+            <img class="compare__img compare__img--before"
+                 src="assets/results-balayage-before.webp"
+                 alt="The same client before her appointment — long hair grown out to a flat, dry, undone blonde"
+                 width="1719" height="2292" loading="lazy">
+
+            <span class="compare__tag compare__tag--before" aria-hidden="true">Before</span>
+            <span class="compare__tag compare__tag--after" aria-hidden="true">After</span>
+
+            <span class="compare__divider" aria-hidden="true"></span>
+            <button class="compare__handle" type="button"
+                    role="slider"
+                    aria-label="Compare before and after — drag, or use the arrow keys"
+                    aria-orientation="horizontal"
+                    aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"
+                    aria-valuetext="50 percent — halfway between before and after">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M8.5 7L5 11l3.5 4"></path>
+                <path d="M13.5 7L17 11l-3.5 4"></path>
+              </svg>
+            </button>
+          </div>
+          <figcaption class="results__caption">Balayage &middot; 165 min &middot; one appointment</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="stories" id="stories" data-reveal-group>
+      <div class="stories__inner" data-stories>
+        <header class="stories__head">
+          <p class="dot-label" data-reveal>&bull; Reviews</p>
+          <h2 class="section-title" data-reveal>In their <em>Words</em></h2>
+        </header>
+
+        <div class="stories__body">
+          <div class="stories__aside" data-reveal>
+            <div class="stories__medallion">
+              <svg class="stories__ring" viewBox="0 0 220 220" aria-hidden="true" focusable="false">
+                <defs>
+                  <path id="storyRing" d="M110,110 m-86,0 a86,86 0 1,1 172,0 a86,86 0 1,1 -172,0"></path>
+                </defs>
+                <text>
+                  <textPath href="#storyRing" startOffset="0" textLength="540" lengthAdjust="spacing">TRUSTED &mdash; BY CLIENTS &mdash; TRUSTED &mdash; BY CLIENTS &mdash;</textPath>
+                </text>
+              </svg>
+              <img class="stories__avatar" data-avatar-target
+                   src="assets/avatar-hannah.jpg"
+                   alt="Hannah R., a MAISON client"
+                   width="112" height="112" loading="lazy">
+            </div>
+          </div>
+
+          <div class="stories__main" data-reveal>
+            <div class="stories__viewport" aria-live="polite">
+              <blockquote class="story" data-story
+                          data-avatar="assets/avatar-hannah.jpg"
+                          data-avatar-alt="Hannah R., a MAISON client">
+                <span class="story__mark" aria-hidden="true">&ldquo;</span>
+                <p class="story__quote">Booked for a Saturday, out in 165 minutes like they quoted. Nobody pushed a treatment I hadn't asked for. Same colour holds up three washes in.</p>
+                <footer class="story__by">
+                  <cite class="story__name">Hannah R.</cite>
+                  <span class="story__service">Balayage</span>
+                </footer>
+              </blockquote>
+
+              <blockquote class="story" data-story
+                          data-avatar="assets/avatar-daniel.jpg"
+                          data-avatar-alt="Daniel M., a MAISON client">
+                <span class="story__mark" aria-hidden="true">&ldquo;</span>
+                <p class="story__quote">I said I wasn't up for talking that day and they just let me sit. Cut matched the photo on my phone. I didn't have to explain it twice, which has never happened to me.</p>
+                <footer class="story__by">
+                  <cite class="story__name">Daniel M.</cite>
+                  <span class="story__service">Precision cut</span>
+                </footer>
+              </blockquote>
+
+              <blockquote class="story" data-story
+                          data-avatar="assets/avatar-claire.jpg"
+                          data-avatar-alt="Claire T., a MAISON client">
+                <span class="story__mark" aria-hidden="true">&ldquo;</span>
+                <p class="story__quote">My copper had gone patchy from a box dye. They told me straight it'd take about three hours and it did. No lecture about the box dye, just fixed it.</p>
+                <footer class="story__by">
+                  <cite class="story__name">Claire T.</cite>
+                  <span class="story__service">Colour correction</span>
+                </footer>
+              </blockquote>
+            </div>
+
+            <div class="stories__controls">
+              <button class="stories__nav" type="button" data-prev aria-label="Previous review">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 14L7.5 10l4-4"></path></svg>
+              </button>
+              <ul class="stories__dots">
+                <li><button class="stories__dot" type="button" data-dot aria-current="true" aria-label="Show Hannah R.'s review"></button></li>
+                <li><button class="stories__dot" type="button" data-dot aria-label="Show Daniel M.'s review"></button></li>
+                <li><button class="stories__dot" type="button" data-dot aria-label="Show Claire T.'s review"></button></li>
+              </ul>
+              <button class="stories__nav" type="button" data-next aria-label="Next review">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 6l4 4-4 4"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" data-marquee aria-label="A few moments from the studio">
+      <div class="marquee__viewport">
+        <ul class="marquee__track" aria-hidden="true">
+          <li class="marquee__item"><img src="assets/hero.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-02-balayage.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/about-foils.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-01-cut.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/about-texture.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-05-root-color.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/about-tools.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-03-gloss.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-04-keratin.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <!-- duplicate set for a seamless loop -->
+          <li class="marquee__item"><img src="assets/hero.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-02-balayage.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/about-foils.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-01-cut.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/about-texture.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-05-root-color.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/about-tools.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-03-gloss.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-04-keratin.webp" alt="" width="176" height="220" loading="lazy"></li>
+        </ul>
+      </div>
+      <button class="marquee__toggle" type="button" data-marquee-toggle aria-pressed="false" aria-label="Pause the scrolling photos">
+        <svg class="marquee__icon marquee__icon--pause" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><rect x="3.5" y="2.5" width="3" height="11" rx="1"></rect><rect x="9.5" y="2.5" width="3" height="11" rx="1"></rect></svg>
+        <svg class="marquee__icon marquee__icon--play" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4 2.6v10.8a.7.7 0 0 0 1.06.6l8.5-5.4a.7.7 0 0 0 0-1.2L5.06 2A.7.7 0 0 0 4 2.6Z"></path></svg>
+      </button>
+    </div>
+
+    <section class="cta" id="contact" data-reveal-group>
+      <div class="cta__inner">
+        <p class="dot-label" data-reveal>&bull; Book in</p>
+        <h2 class="cta__title" data-reveal>
+          <span class="cta__line cta__line--sans">Book a time,</span>
+          <span class="cta__line cta__line--serif">we'll keep it.</span>
+        </h2>
+        <p class="cta__sub" data-reveal>No deposit, no phone tag. Tell us what you want done and we'll send back a time and the exact price.</p>
+        <a class="cta__button" href="mailto:hello@maison.studio" data-reveal>
+          Book an appointment
+          <span class="cta__button-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11L11 3"></path><path d="M4.5 3H11v6.5"></path></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" data-reveal-group>
+    <div class="site-footer__inner">
+      <div class="site-footer__top">
+        <div class="site-footer__contact" data-reveal>
+          <p class="footer-label">( Say hello )</p>
+          <a class="site-footer__email" href="mailto:hello@maison.studio">hello@maison.studio</a>
+          <p class="site-footer__meta">
+            12 Corell Lane, Studio 3<br>
+            Tue&ndash;Sat, 9&ndash;6 &middot; by appointment
+          </p>
+        </div>
+
+        <nav class="site-footer__nav" aria-label="Footer" data-reveal>
+          <div class="footer-col">
+            <p class="footer-label">( Pages )</p>
+            <ul>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#results">Results</a></li>
+              <li><a href="#stories">Reviews</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <p class="footer-label">( Follow )</p>
+            <ul>
+              <li><a href="#" aria-label="MAISON Studio on Instagram">Instagram</a></li>
+              <li><a href="#" aria-label="MAISON Studio on Facebook">Facebook</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="site-footer__fine" data-reveal>
+        <p>Fictional salon &mdash; a portfolio piece.</p>
+        <p>&copy; 2026 MAISON Studio</p>
+      </div>
+    </div>
+
+    <div class="site-footer__wordmark" aria-hidden="true">MAISON<span>.</span></div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>

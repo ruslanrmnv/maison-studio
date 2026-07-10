@@ -1,0 +1,4 @@
+# local tooling state
+.netlify/
+.claude/
+node_modules/
