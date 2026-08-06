@@ -29,7 +29,7 @@ Mixed-type headlines, exactly like the reference: one line in high-contrast SERI
 - **Serif (display accents only):** "Zodiak" from Fontshare or "Bodoni Moda" from Google Fonts — italic, 400–500.
 - **Sans (everything else):** "General Sans" from Fontshare — 600/700 uppercase for headline parts, 400 for body.
 - Headline scale `clamp(2.8rem, 7.5vw, 6.5rem)`. Italic serif words may also appear inside section titles ("OUR *SERVICES*", "SEE THE *RESULTS*").
-- **Labels:** tiny `• About us` dot-labels, 11px, 0.15em tracking. Micro-tags in curly braces `{Balayage}` `{Keratin}` under the hero image, spread across the width.
+- **Labels:** tiny `• About us` dot-labels, 11px, 0.15em tracking. Under the hero, a row of service links carrying their real duration ("BALAYAGE 165 min"). NOT curly-brace `{Balayage}` micro-tags — braces are code syntax used as decoration and read as AI-template; the duration is the salon's actual argument.
 - **Body:** 16px, line-height 1.7, max-width 58ch.
 
 ## 4. Layout (section by section, from the reference)
@@ -38,7 +38,7 @@ Mixed-type headlines, exactly like the reference: one line in high-contrast SERI
 2. **About (cream):** centered quote-style paragraph with 4 small rounded images floating at the corners around it; 2–3 pill "sticker" badges (one rotated a few degrees, dark pill) — "12 YEARS", "3 CHAIRS, NO WAITING".
 3. **Services (dark):** huge ghost-type list — numbers `(01)`–`(05)`, uppercase titles in low-contrast warm gray that brighten on hover, small rounded photo appears next to the hovered row, arrow icon right. Price + duration on each row (e.g. "90 min — from $140"). This is the menu, not cards.
 4. **Results (dark→cream):** before/after slider — TWO images in a rounded frame with a draggable vertical divider (vanilla JS, pointer events). For a salon: hair color/style before-after. This is the page's interactive signature — build it well: keyboard accessible (arrow keys), touch-friendly.
-5. **Testimonials (cream):** one quote at a time, small round avatar, prev/next dots; a rotating circular text badge ("TRUSTED — BY CLIENTS —") done with SVG textPath + CSS rotation.
+5. **Testimonials (cream):** one quote at a time, prev/next dots, and a plain circular portrait of whoever is speaking. NO rotating circular text badge — it is the single clearest "Framer/Webflow template" tell, none of the leading salons audited use one, and "TRUSTED — BY CLIENTS" is exactly the puffery §6 bans. Aggregate rating stays a quiet one-line fact, never a big-number stat block.
 6. **CTA (cream):** centered mixed-type headline "TAKE THE *FIRST STEP*..." style, one pill button.
 7. **Footer (dark):** link columns with `( Pages )` bracket labels, contact large, then the oversized wordmark "MAISON." cropped at the bottom edge.
 8. **Marquee:** one horizontal auto-scrolling photo strip between sections (CSS animation, pausable, respects reduced-motion).
@@ -53,7 +53,6 @@ GSAP + ScrollTrigger from CDN. Vanilla JS, no build step. Reuse dental-demo patt
 - Scroll: fade + rise (40px) at 20% viewport, 60ms stagger, once.
 - Services list: rows reveal with stagger; on hover the ghost text brightens 250ms and the thumbnail scales in from 0.9.
 - Before/after divider: drag with pointer events, subtle inertia; the handle scales 1.1 while dragging.
-- Circular badge rotates slowly (CSS, 20s linear infinite).
 - Marquee: constant slow scroll, duplicated track for the loop.
 - Rules: transform/opacity only; micro-interactions 150–400ms; exits faster than entrances; ALL of it disabled under `prefers-reduced-motion` (marquee and badge stop, content static and visible); `gsap.from` only so JS failure leaves content visible.
 
