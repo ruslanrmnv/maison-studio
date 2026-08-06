@@ -117,6 +117,7 @@ ul {
 }
 
 .wordmark {
+  position: relative;
   justify-self: center;
   font-family: var(--font-sans);
   font-weight: 600;
@@ -125,6 +126,14 @@ ul {
   color: var(--ink);
   text-decoration: none;
   white-space: nowrap;
+}
+
+/* 31px of text, 44px of target — the header row is already 44px tall (the
+   pill sets it), so this costs no layout */
+.wordmark::after {
+  content: "";
+  position: absolute;
+  inset: -6.5px 0;
 }
 
 .wordmark span {
@@ -365,6 +374,7 @@ ul {
 /* the service name carries its real duration — the salon's whole argument.
    (This replaced decorative {curly-brace} tags, which read as code, not salon.) */
 .hero__tag-link {
+  position: relative;
   display: inline-flex;
   align-items: baseline;
   gap: 0.5rem;
@@ -380,6 +390,16 @@ ul {
 
 .hero__tag-link:hover {
   border-bottom-color: var(--ink);
+}
+
+/* The link is a 25px text row. This overlay lifts the tap target to 36px —
+   the full row pitch, so wrapped rows never overlap each other — with zero
+   layout change. A true 44px needs +19px per row, which at 375x670 pushes
+   the hero CTA and proof line below the phone fold. The fold wins. */
+.hero__tag-link::after {
+  content: "";
+  position: absolute;
+  inset: -5.5px 0;
 }
 
 .hero__tag-time {
@@ -829,7 +849,9 @@ ul {
 }
 
 .results__tab {
-  padding: 0.4rem 0;
+  /* extra height goes above the text so the active underline stays tight to
+     it — takes the tap target from 33px to 44px without moving the rule */
+  padding: 1.1rem 0 0.4rem;
   border: 0;
   border-bottom: 2px solid transparent;
   background: none;
@@ -1137,14 +1159,16 @@ ul {
 .stories__dots {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0;
 }
 
+/* the visible dot stays 9px (the ::before); the button around it carries the
+   tap target. Gap is 0 so the dots sit as close as they did at 24px wide. */
 .stories__dot {
   display: grid;
   place-items: center;
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 44px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -1230,8 +1254,8 @@ ul {
   z-index: 2;
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--hairline);
   border-radius: 50%;
   background: var(--cream);
@@ -1418,10 +1442,19 @@ ul {
 }
 
 .footer-col a {
+  position: relative;
   color: var(--on-dark-55);
   text-decoration: none;
   font-size: 1rem;
   transition: color 200ms ease;
+}
+
+/* 20px of text on a 38px pitch — the overlay claims 36px of it, so the rows
+   stay where they are and never overlap each other */
+.footer-col a::after {
+  content: "";
+  position: absolute;
+  inset: -8px 0;
 }
 
 .footer-col a:hover {
@@ -1798,6 +1831,56 @@ select.field__input {
 
 .bookform__status.is-error {
   color: var(--terracotta);
+}
+
+/* ---------- proof pull-quote ----------
+   One review, quoted where the hesitation actually lives: next to the price
+   list, and next to the booking form. Both are fragments of reviews already
+   in the carousel, so nothing new is claimed. */
+.proof {
+  margin: clamp(2rem, 4vw, 2.75rem) 0 0;
+  max-width: 38ch;
+  padding-left: clamp(0.9rem, 2vw, 1.25rem);
+  border-left: 1px solid var(--hairline);
+}
+
+.proof__quote {
+  margin: 0;
+}
+
+.proof__quote p {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.15rem, 2.2vw, 1.4rem);
+  line-height: 1.4;
+  color: var(--ink);
+}
+
+.proof__by {
+  margin: clamp(0.6rem, 1.4vw, 0.85rem) 0 0;
+  font-size: var(--size-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.proof--dark {
+  border-left-color: var(--hairline-on-dark);
+}
+
+.proof--dark .proof__quote p {
+  color: var(--on-dark);
+}
+
+.proof--dark .proof__by {
+  color: var(--on-dark-55);
+}
+
+/* at the form the quote opens the column, so it leads instead of trailing */
+.policy .proof {
+  margin: 0 0 clamp(1.85rem, 4vw, 2.5rem);
 }
 
 .policy__title {
