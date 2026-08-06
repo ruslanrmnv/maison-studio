@@ -37,7 +37,11 @@ if (window.Lenis && !reduceMotion) {
       if (!target) return;
       event.preventDefault();
       history.pushState(null, "", id);
+      const header = document.querySelector(".site-header");
       lenis.scrollTo(target, {
+        // clear the fixed header, or every anchor lands with its heading tucked
+        // underneath it (Lenis ignores scroll-margin-top, so it is passed here)
+        offset: header ? -header.offsetHeight : 0,
         onComplete: () => {
           target.setAttribute("tabindex", "-1");
           target.focus({ preventScroll: true });
@@ -90,9 +94,11 @@ if (window.gsap && !reduceMotion) {
       { y: 12, opacity: 0, duration: 0.6 },
       0
     )
+    // clearProps matters: the header's show/hide is a CSS class transform, and
+    // an inline transform left behind by GSAP would outrank it forever
     .from(
       ".site-header",
-      { y: -16, opacity: 0, duration: 0.6 },
+      { y: -16, opacity: 0, duration: 0.6, clearProps: "transform,opacity" },
       0.1
     );
 
@@ -384,6 +390,105 @@ document.querySelectorAll("[data-book-form]").forEach((form) => {
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", onScroll, { passive: true });
   update();
+})();
+
+/* Header — hides on the way down, comes back on the way up, and takes a cream
+   ground once it is over content so ink type stays readable on the dark break.
+   At the very top it is transparent, exactly as it was. */
+(() => {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+
+  const root = document.documentElement;
+  let last = window.scrollY;
+  let queued = false;
+
+  const update = () => {
+    queued = false;
+    const y = window.scrollY;
+    const delta = y - last;
+    const atTop = y < 40;
+
+    header.classList.toggle("is-stuck", !atTop);
+
+    if (document.body.classList.contains("is-menu-open") || atTop) {
+      header.classList.remove("is-hidden");           // the close button lives here
+    } else if (delta > 4) {
+      header.classList.add("is-hidden");
+    } else if (delta < -4) {
+      header.classList.remove("is-hidden");
+    }
+
+    if (Math.abs(delta) > 4) last = y;
+  };
+
+  const onScroll = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(update);
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  update();
+})();
+
+/* Overlay menu. `inert` on everything behind the panel is the focus trap —
+   it pulls the page out of the tab order and off the accessibility tree, so
+   no manual key cycling is needed. */
+(() => {
+  const menu = document.querySelector("[data-menu]");
+  const btn = document.querySelector(".menu-btn");
+  if (!menu || !btn) return;
+
+  const root = document.documentElement;
+  const behind = [
+    document.querySelector("main"),
+    document.querySelector(".site-footer"),
+    document.querySelector("[data-bookbar]"),
+  ].filter(Boolean);
+
+  let open = false;
+
+  const setInert = (el, on) =>
+    on ? el.setAttribute("inert", "") : el.removeAttribute("inert");
+
+  const setOpen = (next) => {
+    if (next === open) return;
+    open = next;
+
+    menu.classList.toggle("is-open", open);
+    // on <body>, never <html>: Lenis rewrites the root element's className
+    // when it starts and stops, which silently drops a flag set there
+    document.body.classList.toggle("is-menu-open", open);
+    btn.setAttribute("aria-expanded", String(open));
+    btn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+
+    behind.forEach((el) => setInert(el, open));
+    setInert(menu, !open);
+
+    // hold the page still underneath; without Lenis, fall back to overflow
+    if (lenis) open ? lenis.stop() : lenis.start();
+    else root.style.overflow = open ? "hidden" : "";
+
+    if (open) menu.querySelector(".menu__link").focus({ preventScroll: true });
+    else btn.focus({ preventScroll: true });
+  };
+
+  btn.addEventListener("click", () => setOpen(!open));
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && open) setOpen(false);
+  });
+
+  // Capture phase on purpose: this runs before the anchor handler above, so
+  // Lenis is started again by the time it begins the scroll tween.
+  menu.addEventListener(
+    "click",
+    (event) => {
+      if (event.target.closest('a[href^="#"]')) setOpen(false);
+    },
+    true
+  );
 })();
 
 /* Marquee — CSS drives the scroll; the button just toggles play state.

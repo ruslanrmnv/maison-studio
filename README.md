@@ -25,6 +25,10 @@ like a specific salon owner wrote it — exact durations, exact prices, no upsel
 - **A price-first services menu** on a dark, film-grained break — every row shows
   the exact minutes and price. Terracotta wipe on hover; a persistent terracotta
   cue on touch, where there's no hover to reveal it.
+- **A menu that behaves** — full-screen overlay on the site's dark break, with
+  `inert` doing the focus trapping, Escape and outside state handled, and the
+  scroll held still underneath. The header is fixed and reveals on scroll-up so
+  the menu and the booking pill are reachable from anywhere on the page.
 - **Motion that fails safe** — Lenis smooth scroll plus GSAP scroll choreography:
   masked title reveals, bottom-to-top photo wipes, and three scrub-driven
   parallax layers (hero photo, about cluster, footer wordmark). Everything is

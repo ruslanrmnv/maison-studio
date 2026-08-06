@@ -43,7 +43,8 @@
           </svg>
         </span>
       </a>
-      <button class="icon-btn menu-btn" type="button" aria-label="Open menu" aria-expanded="false">
+      <button class="icon-btn menu-btn" type="button" aria-label="Open menu"
+              aria-expanded="false" aria-controls="site-menu">
         <svg class="menu-glyph" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
           <line class="menu-glyph__ln menu-glyph__ln--top" x1="3" y1="7.5" x2="13" y2="7.5"></line>
           <line class="menu-glyph__ln menu-glyph__ln--bot" x1="7" y1="12.5" x2="17" y2="12.5"></line>
@@ -51,6 +52,39 @@
       </button>
     </div>
   </header>
+
+  <!-- Overlay menu. Starts inert so a JS failure leaves it unreachable rather
+       than stranded on top of the page; the footer nav covers navigation then. -->
+  <div class="menu" id="site-menu" data-menu inert>
+    <div class="menu__inner">
+      <nav class="menu__nav" aria-label="Main">
+        <ul>
+          <li class="menu__item"><a class="menu__link" href="#services">Services</a></li>
+          <li class="menu__item"><a class="menu__link" href="#results">Results</a></li>
+          <li class="menu__item"><a class="menu__link" href="#team">The chairs</a></li>
+          <li class="menu__item"><a class="menu__link" href="#stories">Reviews</a></li>
+          <li class="menu__item"><a class="menu__link" href="#about">About</a></li>
+        </ul>
+      </nav>
+
+      <div class="menu__aside">
+        <p class="menu__label">( Book in )</p>
+        <a class="menu__book" href="#book">
+          Book an appointment
+          <span class="menu__book-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11L11 3"></path><path d="M4.5 3H11v6.5"></path></svg>
+          </span>
+        </a>
+
+        <p class="menu__label">( Find us )</p>
+        <a class="menu__email" href="mailto:hello@maison.studio">hello@maison.studio</a>
+        <p class="menu__meta">
+          12 Corell Lane, Studio 3<br>
+          Tue&ndash;Sat, 9&ndash;6 &middot; by appointment
+        </p>
+      </div>
+    </div>
+  </div>
 
   <main>
     <section class="hero">

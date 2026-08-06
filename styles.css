@@ -80,6 +80,14 @@ img {
   max-width: 100%;
 }
 
+/* The header is fixed, so a native anchor jump (the no-Lenis fallback) has to
+   be told to stop short of it — Lenis gets the same clearance via `offset`.
+   Sized to stay above the header's own height (109px at its tallest). */
+:target,
+section[id] {
+  scroll-margin-top: clamp(5rem, 14vh, 7.5rem);
+}
+
 ul {
   margin: 0;
   padding: 0;
@@ -91,16 +99,34 @@ ul {
   outline-offset: 3px;
 }
 
-/* ---------- header ---------- */
+/* ---------- header ----------
+   Fixed, not absolute: the menu button and the booking pill both live here,
+   and an absolute header takes them off the page the moment the hero scrolls
+   away. At the top it is transparent and sits exactly where it always did. */
 .site-header {
-  position: absolute;
+  position: fixed;
   inset: 0 0 auto 0;
-  z-index: 10;
+  z-index: 60;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: var(--space-gutter);
   padding: clamp(1.1rem, 2.6vw, 2rem) var(--space-gutter);
+  border-bottom: 1px solid transparent;
+  transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 300ms ease, border-color 300ms ease;
+}
+
+/* scrolling down — get out of the reader's way */
+.site-header.is-hidden {
+  transform: translateY(-100%);
+}
+
+/* revealed over content: it needs its own ground, or ink-on-cream type
+   would sit unreadable over the dark services break */
+.site-header.is-stuck {
+  background: var(--cream);
+  border-bottom-color: var(--hairline);
 }
 
 .site-header__social {
@@ -162,6 +188,8 @@ ul {
 
 /* distinctive menu mark: two staggered lines that slide to centre on hover */
 .menu-glyph__ln {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
   transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -171,6 +199,46 @@ ul {
 
 .menu-btn:hover .menu-glyph__ln--bot {
   transform: translateX(-2px);
+}
+
+/* Open state morphs the two offset rules into an X. Both lines are pulled to
+   the shared centre (10,10) first, then rotated. These sit AFTER the hover
+   rules on purpose — equal specificity, so source order decides, and the open
+   state must survive the pointer resting on the button. */
+.is-menu-open .menu-btn .menu-glyph__ln--top {
+  transform: translate(2px, 2.5px) rotate(45deg);
+}
+
+.is-menu-open .menu-btn .menu-glyph__ln--bot {
+  transform: translate(-2px, -2.5px) rotate(-45deg);
+}
+
+/* header sits above the overlay so one button both opens and closes it —
+   which means its ink palette has to flip to the panel's */
+.is-menu-open .site-header {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+
+.is-menu-open .wordmark,
+.is-menu-open .menu-btn,
+.is-menu-open .icon-btn,
+.is-menu-open .contact-pill {
+  color: var(--on-dark);
+}
+
+.is-menu-open .icon-btn,
+.is-menu-open .contact-pill {
+  border-color: var(--hairline-on-dark);
+}
+
+.is-menu-open .contact-pill:hover {
+  border-color: var(--on-dark);
+}
+
+.is-menu-open .contact-pill__arrow {
+  background: var(--on-dark);
+  color: var(--dark);
 }
 
 /* Outlined booking pill with arrow chip. Deliberately NOT filled: the hero
@@ -214,6 +282,203 @@ ul {
 
 .contact-pill:hover .contact-pill__arrow {
   transform: rotate(45deg);
+}
+
+/* ---------- overlay menu ---------- */
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--dark);
+  color: var(--on-dark);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 380ms ease, visibility 0s linear 380ms;
+}
+
+.menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 380ms ease, visibility 0s;
+}
+
+/* same cheap grain as the services break and the footer */
+.menu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.menu__inner {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  min-height: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: clamp(5.5rem, 14vh, 8rem) var(--space-gutter) clamp(2.5rem, 7vh, 4.5rem);
+  display: grid;
+  align-content: center;
+  gap: clamp(2.25rem, 5vw, 3.5rem);
+}
+
+.menu__nav ul {
+  display: grid;
+  gap: clamp(0.15rem, 0.6vw, 0.5rem);
+}
+
+.menu__link {
+  /* the type is only 35px tall at 375px — flex + min-height lifts the row to a
+     44px target without touching the type or the rhythm at larger sizes */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 6.5vw, 3.5rem);
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--on-dark-55);
+  text-decoration: none;
+  transition: color 250ms ease;
+}
+
+.menu__link:hover,
+.menu__link:focus-visible {
+  color: var(--on-dark);
+}
+
+.menu__label {
+  margin: 0 0 0.75rem;
+  font-size: var(--size-label);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--on-dark-55);
+}
+
+.menu__label + .menu__label {
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.menu__book {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 52px;
+  padding: 0 0.6rem 0 1.6rem;
+  border-radius: 999px;
+  background: var(--on-dark);
+  color: var(--dark);
+  text-decoration: none;
+  font-size: var(--size-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background-color 250ms ease;
+}
+
+.menu__book:hover {
+  background: var(--terracotta);
+  color: var(--on-dark);
+}
+
+.menu__book-arrow {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--dark);
+  color: var(--on-dark);
+  transition: transform 250ms ease;
+}
+
+.menu__book:hover .menu__book-arrow {
+  transform: rotate(45deg);
+}
+
+.menu__email {
+  display: inline-block;
+  min-height: 44px;
+  font-family: var(--font-sans);
+  font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--on-dark);
+  text-decoration: underline;
+  text-decoration-color: var(--on-dark-55);
+  text-underline-offset: 5px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 200ms ease;
+}
+
+.menu__email:hover {
+  text-decoration-color: var(--on-dark);
+}
+
+.menu__meta {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--on-dark-55);
+}
+
+/* entrance: the panel fades, its contents step in behind it */
+.menu__item,
+.menu__aside {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 400ms ease, transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.menu.is-open .menu__item,
+.menu.is-open .menu__aside {
+  opacity: 1;
+  transform: none;
+}
+
+.menu.is-open .menu__item:nth-child(1) { transition-delay: 80ms; }
+.menu.is-open .menu__item:nth-child(2) { transition-delay: 130ms; }
+.menu.is-open .menu__item:nth-child(3) { transition-delay: 180ms; }
+.menu.is-open .menu__item:nth-child(4) { transition-delay: 230ms; }
+.menu.is-open .menu__item:nth-child(5) { transition-delay: 280ms; }
+.menu.is-open .menu__aside { transition-delay: 330ms; }
+
+@media (min-width: 900px) {
+  .menu__inner {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: center;
+    gap: clamp(3rem, 7vw, 6rem);
+  }
+}
+
+/* Landscape phones: the type scale keys off width, which is plentiful here
+   while height is not — a 52px link would push the menu into scrolling.
+   Two columns and smaller type keep the whole thing on one screen. */
+@media (max-height: 560px) and (min-width: 600px) {
+  .menu__inner {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 3.5rem);
+    padding-top: clamp(4.5rem, 17vh, 5.5rem);
+    padding-bottom: clamp(1.5rem, 5vh, 2.5rem);
+  }
+
+  .menu__link {
+    font-size: clamp(1.35rem, 2.6vw, 1.9rem);
+  }
+
+  .menu__label + .menu__label {
+    margin-top: 1.25rem;
+  }
 }
 
 /* ---------- hero ---------- */

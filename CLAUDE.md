@@ -42,6 +42,7 @@ Mixed-type headlines, exactly like the reference: one line in high-contrast SERI
 6. **CTA (cream):** centered mixed-type headline "TAKE THE *FIRST STEP*..." style, one pill button.
 7. **Footer (dark):** link columns with `( Pages )` bracket labels, contact large, then the oversized wordmark "MAISON." cropped at the bottom edge.
 8. **Marquee:** one horizontal auto-scrolling photo strip between sections (CSS animation, pausable, respects reduced-motion).
+9. **Header + menu:** header is `position: fixed` — it carries the menu button AND the booking pill, and an absolute header takes both off the page the moment the hero scrolls away. Transparent at the top, hides on scroll-down, returns on scroll-up with a cream ground + hairline so ink type stays readable over the dark break. The menu is a full-screen dark overlay (same grain) with the nav as large ghost-type; the header sits above it (`z-index` 60 vs 50) so one button opens and closes, its palette flipping to `--on-dark`. Focus trap = `inert` on main/footer/bookbar. Anchor clearance: `offset: -headerHeight` for Lenis, `scroll-margin-top` for the native fallback — both are needed.
 
 Container 1200px; section padding 120–160px desktop; hairlines `1px rgba(30,26,22,.15)`. Mobile-first, 375/768/1024/1440, no horizontal scroll (marquee excepted, overflow hidden).
 
