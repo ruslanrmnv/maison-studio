@@ -29,6 +29,25 @@ like a specific salon owner wrote it — exact durations, exact prices, no upsel
   so if the CDN or JS fails the content is still visible. All of it respects
   `prefers-reduced-motion`.
 
+## Researched against real salons, not templates
+
+The second pass was built by auditing five working salon sites — Hershesons,
+Larry King, Blue Tit London, Josh Wood Colour and Dear Sundays — and taking the
+patterns all of them share:
+
+- **Booking is the product, not a contact link.** Every site audited keeps a
+  booking CTA permanently in reach. Ours had been hidden below 560 px, leaving
+  phones with no way to book above the fold. It is now visible at every width,
+  backed by a sticky mobile bar that retreats once the form is on screen, and the
+  `mailto:` was replaced with a real, labelled, keyboard-accessible form.
+- **Price follows the stylist.** Blue Tit prices across five stylist levels; Josh
+  Wood grades its team by title. Scaled to a three-chair salon: three named
+  stylists, each with a level and a stated difference from the list price.
+- **Salons publish their rules.** Allergy tests, cancellation windows and deposits
+  are standard on real sites and absent from templates — so the booking form sits
+  beside a "Before you book" column covering all four.
+- **Social proof carries a source.** An aggregate rating sits with the reviews.
+
 ## Results
 
 - **Assets: 86 MB → 1.16 MB (−98.7%).** Source renders were multi-megabyte PNGs;

@@ -223,6 +223,70 @@ document.querySelectorAll("[data-stories]").forEach((root) => {
   show(0);
 });
 
+/* Booking form — the site is static, so the submit is answered inline instead of
+   posted. Validation leans on the browser's constraint API, but the message is
+   rendered into a live region so screen readers get it too. */
+document.querySelectorAll("[data-book-form]").forEach((form) => {
+  const status = form.querySelector("[data-book-status]");
+  if (!status) return;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const invalid = form.querySelector(":invalid");
+    if (invalid) {
+      status.classList.add("is-error");
+      status.textContent =
+        "We need a name and an email that works — the rest we can sort in the reply.";
+      invalid.focus();
+      return;
+    }
+
+    const name = (form.elements.name.value || "").trim().split(/\s+/)[0];
+    const service = form.elements.service.value;
+    const stylist = form.elements.stylist.value;
+    const who =
+      stylist === "No preference" ? "the first free chair" : stylist.split("—")[0].trim();
+
+    status.classList.remove("is-error");
+    status.textContent =
+      (name ? "Thanks, " + name + " — " : "Thanks — ") +
+      "that's " + service.split("—")[0].trim().toLowerCase() + " with " + who +
+      ". Nothing was actually sent: this is a portfolio demo. The real thing replies with a time and the exact price.";
+    form.reset();
+  });
+});
+
+/* Sticky booking bar (small screens): appears once the hero has scrolled away and
+   retreats as soon as the booking section is reached, so it never sits on top of
+   the form or the footer. */
+(() => {
+  const bar = document.querySelector("[data-bookbar]");
+  const book = document.getElementById("book");
+  const hero = document.querySelector(".hero");
+  if (!bar || !book || !hero) return;
+
+  bar.hidden = false;
+  let queued = false;
+
+  const update = () => {
+    queued = false;
+    const heroGone = hero.getBoundingClientRect().bottom < 0;
+    const bookInReach = book.getBoundingClientRect().top < window.innerHeight;
+    bar.classList.toggle("is-visible", heroGone && !bookInReach);
+  };
+
+  const onScroll = () => {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(update);
+  };
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  update();
+})();
+
 /* Marquee — CSS drives the scroll; the button just toggles play state.
    Hover/focus pause is pure CSS, so this keeps working if JS never loads. */
 document.querySelectorAll("[data-marquee]").forEach((marquee) => {

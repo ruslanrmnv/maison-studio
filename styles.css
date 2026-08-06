@@ -8,7 +8,9 @@
   --ink: #1E1A16;
   --on-dark: #EDE7DC;
   --terracotta: #B4593A;
-  --ink-55: rgba(30, 26, 22, 0.55);
+  /* muted label ink — was 0.55, which measured 3.67:1 on cream and failed
+     4.5:1 for the 11px labels it is used on. 0.66 measures ~5.1:1. */
+  --ink-muted: rgba(30, 26, 22, 0.66);
   --ink-70: rgba(30, 26, 22, 0.7);
   --hairline: rgba(30, 26, 22, 0.15);
   --on-dark-55: rgba(237, 231, 220, 0.55);
@@ -228,7 +230,7 @@ ul {
   margin: clamp(1.5rem, 3vw, 2rem) 0 0;
   font-size: var(--size-label);
   letter-spacing: 0.04em;
-  color: var(--ink-55);
+  color: var(--ink-muted);
 }
 
 .hero__line {
@@ -716,7 +718,7 @@ ul {
   font-size: var(--size-label);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink-55);
+  color: var(--ink-muted);
 }
 
 /* example switch: three service names, underline marks the active one */
@@ -737,7 +739,7 @@ ul {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink-55);
+  color: var(--ink-muted);
   cursor: pointer;
   transition: color 200ms ease, border-color 200ms ease;
 }
@@ -1022,7 +1024,7 @@ ul {
   font-size: var(--size-label);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink-55);
+  color: var(--ink-muted);
 }
 
 .story__service::before {
@@ -1079,7 +1081,7 @@ ul {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  border: 1px solid var(--ink-55);
+  border: 1px solid var(--ink-muted);
   background: transparent;
   transition: background-color 200ms ease, border-color 200ms ease, transform 200ms ease;
 }
@@ -1402,6 +1404,448 @@ ul {
   }
 }
 
+/* ---------- services: stylist-level pricing legend ---------- */
+.services__tiers {
+  margin: clamp(2rem, 4vw, 2.75rem) 0 0;
+  max-width: 62ch;
+  font-size: 0.9375rem;
+  color: var(--on-dark-55);
+}
+
+/* terracotta stays on the underline, never on 15px text — it fails 4.5:1 either way round */
+.services__tiers a {
+  color: var(--on-dark);
+  text-decoration: underline;
+  text-decoration-color: var(--on-dark-55);
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color 200ms ease;
+}
+
+.services__tiers a:hover {
+  text-decoration-color: var(--terracotta);
+}
+
+/* ---------- team ---------- */
+.team {
+  background: var(--cream);
+  padding-block: var(--space-section);
+}
+
+.team__inner {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--space-gutter);
+}
+
+.team__head {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.team__note {
+  margin: 0;
+  max-width: 40ch;
+  font-size: 0.9375rem;
+  color: var(--ink-70);
+}
+
+.team__list {
+  margin: clamp(3rem, 6vw, 4.5rem) 0 0;
+  display: grid;
+  gap: clamp(3rem, 7vw, 4rem);
+}
+
+.team__member {
+  min-width: 0;
+}
+
+.team__figure {
+  margin: 0;
+}
+
+.team__photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-media);
+  /* one heavier warm grade pulls three different sources into a single set */
+  filter: sepia(0.32) saturate(0.72) contrast(1.04) brightness(1.02);
+  transition: filter 400ms ease;
+}
+
+.team__member:hover .team__photo {
+  filter: sepia(0.12) saturate(0.98) contrast(1.03) brightness(1.03);
+}
+
+.team__num {
+  margin: clamp(1rem, 2.2vw, 1.35rem) 0 0;
+  font-size: var(--size-label);
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-muted);
+}
+
+.team__name {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-sans);
+  font-size: clamp(1.6rem, 3.2vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+/* reuses the pill motif from the about badges rather than inventing a new chip */
+.team__level {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  margin: 0.7rem 0 0;
+  padding: 0 0.8rem;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  font-size: var(--size-label);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-70);
+}
+
+.team__bio {
+  margin: clamp(0.9rem, 2vw, 1.15rem) 0 0;
+  max-width: 34ch;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--ink-70);
+}
+
+.team__rate {
+  margin: clamp(1rem, 2.2vw, 1.3rem) 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--hairline);
+  font-size: var(--size-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+@media (min-width: 768px) {
+  .team__head {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 38ch);
+    align-items: end;
+    gap: var(--space-gutter);
+  }
+
+  .team__note {
+    justify-self: end;
+  }
+
+  .team__list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    align-items: start;
+  }
+
+  /* hand-placed stagger so three portraits never read as a card grid.
+     Offset via margin, not transform — GSAP owns transform on [data-reveal]
+     and would flatten the stagger when the reveal finishes. */
+  .team__member:nth-child(2) {
+    margin-top: clamp(1.75rem, 4.5vw, 3.25rem);
+  }
+
+  .team__member:nth-child(3) {
+    margin-top: clamp(0.5rem, 1.5vw, 1.25rem);
+  }
+}
+
+/* ---------- reviews: aggregate rating ---------- */
+.stories__rating {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.7rem;
+  margin: clamp(1rem, 2vw, 1.4rem) 0 0;
+}
+
+/* terracotta is fine here — this is large display type, not body copy */
+.stories__score {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  line-height: 1;
+  color: var(--terracotta);
+}
+
+.stories__count {
+  font-size: var(--size-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+/* ---------- booking: form + policy column ---------- */
+.cta__body {
+  justify-self: stretch;
+  width: 100%;
+  margin-top: clamp(2.75rem, 5vw, 3.75rem);
+  display: grid;
+  gap: clamp(2.75rem, 6vw, 3.5rem);
+  text-align: left;
+}
+
+.bookform__grid {
+  display: grid;
+  gap: clamp(1.15rem, 2.5vw, 1.6rem);
+}
+
+.field {
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field__label {
+  font-size: var(--size-label);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-70);
+}
+
+.field__hint {
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--ink-muted);
+}
+
+/* underline fields — no boxes, no radius, in keeping with the rest of the UI */
+.field__input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.6rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--hairline);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+  transition: border-color 250ms ease;
+}
+
+.field__input::placeholder {
+  color: var(--ink-muted);
+}
+
+.field__input:hover {
+  border-bottom-color: var(--ink-muted);
+}
+
+.field__input:focus {
+  border-bottom-color: var(--terracotta);
+}
+
+.field__input:focus-visible {
+  outline: 2px solid var(--terracotta);
+  outline-offset: 4px;
+}
+
+select.field__input {
+  appearance: none;
+  padding-right: 1.75rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none' stroke='%231E1A16' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 5.5L7 9l3.5-3.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.25rem center;
+  cursor: pointer;
+}
+
+.field__input--area {
+  min-height: 104px;
+  line-height: 1.6;
+  resize: vertical;
+}
+
+.bookform__foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem 1.5rem;
+  margin-top: clamp(1.85rem, 3.5vw, 2.4rem);
+}
+
+.bookform__submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 52px;
+  padding: 0 0.6rem 0 1.6rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--on-dark);
+  font: inherit;
+  font-size: var(--size-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 250ms ease;
+}
+
+.bookform__submit:hover {
+  background: var(--terracotta);
+}
+
+.bookform__arrow {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--ink);
+  transition: transform 250ms ease;
+}
+
+.bookform__submit:hover .bookform__arrow {
+  transform: rotate(45deg);
+}
+
+.bookform__demo {
+  margin: 0;
+  font-size: var(--size-label);
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+}
+
+.bookform__status {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.bookform__status:not(:empty) {
+  margin-top: clamp(1.25rem, 2.5vw, 1.6rem);
+  padding-top: 1rem;
+  border-top: 1px solid var(--hairline);
+}
+
+.bookform__status.is-error {
+  color: var(--terracotta);
+}
+
+.policy__title {
+  margin: 0 0 clamp(1.35rem, 3vw, 1.85rem);
+  font-family: var(--font-sans);
+  font-size: var(--size-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.policy__list {
+  margin: 0;
+  display: grid;
+  gap: clamp(1.3rem, 2.5vw, 1.7rem);
+}
+
+.policy__row {
+  padding-top: clamp(1.2rem, 2.4vw, 1.5rem);
+  border-top: 1px solid var(--hairline);
+}
+
+.policy__row:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.policy__row dt {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.policy__row dd {
+  margin: 0.35rem 0 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-70);
+}
+
+@media (min-width: 620px) {
+  .bookform__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .field--wide {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 900px) {
+  .cta__body {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.85fr);
+    gap: clamp(3rem, 6vw, 5rem);
+    align-items: start;
+  }
+}
+
+/* ---------- sticky mobile booking bar ---------- */
+.bookbar {
+  position: fixed;
+  left: var(--space-gutter);
+  right: var(--space-gutter);
+  bottom: max(0.9rem, env(safe-area-inset-bottom, 0.9rem));
+  z-index: 40;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 56px;
+  padding: 0 1.4rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--on-dark);
+  text-decoration: none;
+  transform: translateY(160%);
+  transition: transform 340ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* [hidden] outranks the media-query display by specificity, so JS can hard-hide it */
+.bookbar[hidden] {
+  display: none;
+}
+
+.bookbar__label {
+  font-size: var(--size-label);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.bookbar__meta {
+  font-size: var(--size-label);
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  color: var(--on-dark-55);
+}
+
+@media (max-width: 899px) {
+  .bookbar {
+    display: flex;
+  }
+
+  .bookbar.is-visible {
+    transform: translateY(0);
+  }
+}
+
 /* ---------- small screens ---------- */
 @media (max-width: 560px) {
   .site-header {
@@ -1416,8 +1860,18 @@ ul {
     justify-self: start;
   }
 
+  /* the booking CTA stays visible at every width — it used to be display:none
+     here, which left phones with no way to book above the fold */
   .contact-pill {
-    display: none;
+    gap: 0.4rem;
+    padding: 0 0.35rem 0 0.85rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.08em;
+  }
+
+  .contact-pill__arrow {
+    width: 30px;
+    height: 30px;
   }
 
   /* drop the editorial indent so the long sans word never clips */

@@ -34,8 +34,8 @@
     <a class="wordmark" href="/">MAISON<span aria-hidden="true">.</span></a>
 
     <div class="site-header__actions">
-      <a class="contact-pill" href="#contact">
-        Contact Us
+      <a class="contact-pill" href="#book">
+        Book now
         <span class="contact-pill__arrow" aria-hidden="true">
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 9L9 3"></path>
@@ -130,7 +130,7 @@
 
         <ul class="services__list">
           <li class="service" data-reveal>
-            <a class="service__row" href="#contact">
+            <a class="service__row" href="#book">
               <span class="service__fill" aria-hidden="true"><img src="assets/service-01-cut.webp" alt="" width="1536" height="2048" loading="lazy"></span>
               <span class="service__num">(01)</span>
               <span class="service__name">Precision Cut</span>
@@ -141,7 +141,7 @@
             </a>
           </li>
           <li class="service" data-reveal>
-            <a class="service__row" href="#contact">
+            <a class="service__row" href="#book">
               <span class="service__fill" aria-hidden="true"><img src="assets/service-02-balayage.webp" alt="" width="1536" height="2048" loading="lazy"></span>
               <span class="service__num">(02)</span>
               <span class="service__name">Balayage</span>
@@ -152,7 +152,7 @@
             </a>
           </li>
           <li class="service" data-reveal>
-            <a class="service__row" href="#contact">
+            <a class="service__row" href="#book">
               <span class="service__fill" aria-hidden="true"><img src="assets/service-03-gloss.webp" alt="" width="1536" height="2048" loading="lazy"></span>
               <span class="service__num">(03)</span>
               <span class="service__name">Gloss &amp; Toner</span>
@@ -163,7 +163,7 @@
             </a>
           </li>
           <li class="service" data-reveal>
-            <a class="service__row" href="#contact">
+            <a class="service__row" href="#book">
               <span class="service__fill" aria-hidden="true"><img src="assets/service-04-keratin.webp" alt="" width="1536" height="2048" loading="lazy"></span>
               <span class="service__num">(04)</span>
               <span class="service__name">Keratin Smoothing</span>
@@ -174,7 +174,7 @@
             </a>
           </li>
           <li class="service" data-reveal>
-            <a class="service__row" href="#contact">
+            <a class="service__row" href="#book">
               <span class="service__fill" aria-hidden="true"><img src="assets/service-05-root-color.webp" alt="" width="1536" height="2048" loading="lazy"></span>
               <span class="service__num">(05)</span>
               <span class="service__name">Root Colour</span>
@@ -185,6 +185,11 @@
             </a>
           </li>
         </ul>
+
+        <p class="services__tiers" data-reveal>
+          Listed prices are with <a href="#team">Tom</a>. Nell adds $15, Amara $30.
+          Any colour needs an allergy test 48 hours ahead &mdash; <a href="#book">we sort that when you book</a>.
+        </p>
       </div>
     </section>
 
@@ -260,11 +265,68 @@
       </div>
     </section>
 
+    <section class="team" id="team" data-reveal-group>
+      <div class="team__inner">
+        <header class="team__head">
+          <div class="team__heading">
+            <p class="dot-label" data-reveal>&bull; The chairs</p>
+            <h2 class="section-title" data-reveal>Three <em>Chairs</em></h2>
+          </div>
+          <p class="team__note" data-reveal>Same three people, every time. You book a person, not a slot &mdash; and the price follows whoever is holding the scissors.</p>
+        </header>
+
+        <ul class="team__list">
+          <li class="team__member" data-reveal>
+            <figure class="team__figure">
+              <img class="team__photo" src="assets/stylist-amara.webp"
+                   alt="Amara, director at MAISON Studio"
+                   width="760" height="950" loading="lazy">
+              <figcaption class="team__num">(01)</figcaption>
+            </figure>
+            <h3 class="team__name">Amara</h3>
+            <p class="team__level">Director</p>
+            <p class="team__bio">Opened the place in 2014. Takes the colour corrections nobody else wants to touch, and still works the first appointment most mornings.</p>
+            <p class="team__rate">List price &plus; $30</p>
+          </li>
+
+          <li class="team__member" data-reveal>
+            <figure class="team__figure">
+              <img class="team__photo" src="assets/stylist-nell.webp"
+                   alt="Nell, senior stylist at MAISON Studio"
+                   width="760" height="950" loading="lazy">
+              <figcaption class="team__num">(02)</figcaption>
+            </figure>
+            <h3 class="team__name">Nell</h3>
+            <p class="team__level">Senior Stylist</p>
+            <p class="team__bio">Balayage and gloss. Will tell you straight if the photo on your phone won't hold in your hair, then get you as close to it as it goes.</p>
+            <p class="team__rate">List price &plus; $15</p>
+          </li>
+
+          <li class="team__member" data-reveal>
+            <figure class="team__figure">
+              <img class="team__photo" src="assets/stylist-tom.webp"
+                   alt="Tom, stylist at MAISON Studio"
+                   width="760" height="950" loading="lazy">
+              <figcaption class="team__num">(03)</figcaption>
+            </figure>
+            <h3 class="team__name">Tom</h3>
+            <p class="team__level">Stylist</p>
+            <p class="team__bio">Cuts, mostly. Quick without rushing you &mdash; a 60-minute precision cut with Tom takes 60 minutes.</p>
+            <p class="team__rate">Prices as listed</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <section class="stories" id="stories" data-reveal-group>
       <div class="stories__inner" data-stories>
         <header class="stories__head">
           <p class="dot-label" data-reveal>&bull; Reviews</p>
           <h2 class="section-title" data-reveal>In their <em>Words</em></h2>
+          <p class="stories__rating" data-reveal>
+            <span class="stories__score">4.9</span>
+            <span class="stories__count">average across 218 Google reviews</span>
+          </p>
         </header>
 
         <div class="stories__body">
@@ -369,20 +431,96 @@
       </button>
     </div>
 
-    <section class="cta" id="contact" data-reveal-group>
+    <section class="cta" id="book" data-reveal-group>
       <div class="cta__inner">
         <p class="dot-label" data-reveal>&bull; Book in</p>
         <h2 class="cta__title" data-reveal>
           <span class="cta__line cta__line--sans">Book a time,</span>
           <span class="cta__line cta__line--serif">we'll keep it.</span>
         </h2>
-        <p class="cta__sub" data-reveal>No deposit, no phone tag. Tell us what you want done and we'll send back a time and the exact price.</p>
-        <a class="cta__button" href="mailto:hello@maison.studio" data-reveal>
-          Book an appointment
-          <span class="cta__button-arrow" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11L11 3"></path><path d="M4.5 3H11v6.5"></path></svg>
-          </span>
-        </a>
+        <p class="cta__sub" data-reveal>Tell us what you want done. We send back a time and the exact price &mdash; usually the same day.</p>
+
+        <div class="cta__body">
+          <form class="bookform" data-book-form novalidate>
+            <div class="bookform__grid">
+              <p class="field">
+                <label class="field__label" for="bk-name">Your name</label>
+                <input class="field__input" id="bk-name" name="name" type="text" autocomplete="name" required>
+              </p>
+              <p class="field">
+                <label class="field__label" for="bk-email">Email</label>
+                <input class="field__input" id="bk-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+              </p>
+              <p class="field">
+                <label class="field__label" for="bk-service">Service</label>
+                <select class="field__input" id="bk-service" name="service">
+                  <option>Precision cut &mdash; 60 min</option>
+                  <option>Balayage &mdash; 165 min</option>
+                  <option>Gloss &amp; toner &mdash; 40 min</option>
+                  <option>Keratin smoothing &mdash; 120 min</option>
+                  <option>Root colour &mdash; 90 min</option>
+                  <option>Not sure yet</option>
+                </select>
+              </p>
+              <p class="field">
+                <label class="field__label" for="bk-stylist">Stylist</label>
+                <select class="field__input" id="bk-stylist" name="stylist">
+                  <option>No preference</option>
+                  <option>Amara &mdash; Director</option>
+                  <option>Nell &mdash; Senior Stylist</option>
+                  <option>Tom &mdash; Stylist</option>
+                </select>
+              </p>
+              <p class="field">
+                <label class="field__label" for="bk-date">Preferred date</label>
+                <input class="field__input" id="bk-date" name="date" type="date">
+              </p>
+              <p class="field">
+                <label class="field__label" for="bk-phone">Phone <span class="field__hint">(optional)</span></label>
+                <input class="field__input" id="bk-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel">
+              </p>
+              <p class="field field--wide">
+                <label class="field__label" for="bk-notes">Anything we should know</label>
+                <textarea class="field__input field__input--area" id="bk-notes" name="notes" rows="3"
+                          placeholder="Box dye in the last year? Rather not chat? Say so here."></textarea>
+              </p>
+            </div>
+
+            <div class="bookform__foot">
+              <button class="bookform__submit" type="submit">
+                Request this time
+                <span class="bookform__arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11L11 3"></path><path d="M4.5 3H11v6.5"></path></svg>
+                </span>
+              </button>
+              <p class="bookform__demo">Demo form &mdash; nothing is sent.</p>
+            </div>
+
+            <p class="bookform__status" data-book-status role="status" aria-live="polite"></p>
+          </form>
+
+          <aside class="policy" aria-labelledby="policy-heading">
+            <h3 class="policy__title" id="policy-heading">( Before you book )</h3>
+            <dl class="policy__list">
+              <div class="policy__row">
+                <dt>Colour needs an allergy test</dt>
+                <dd>48 hours ahead, every time. Two minutes in the salon, or we post you a kit.</dd>
+              </div>
+              <div class="policy__row">
+                <dt>Moving an appointment</dt>
+                <dd>Free up to 24 hours before. Inside that we charge half &mdash; the chair sits empty either way.</dd>
+              </div>
+              <div class="policy__row">
+                <dt>Deposits</dt>
+                <dd>None for cuts. Colour over $150 holds with $50, and it comes off the bill.</dd>
+              </div>
+              <div class="policy__row">
+                <dt>Running late</dt>
+                <dd>Tell us. Past 15 minutes we may have to shorten the service to keep the next person on time.</dd>
+              </div>
+            </dl>
+          </aside>
+        </div>
       </div>
     </section>
   </main>
@@ -405,6 +543,7 @@
             <ul>
               <li><a href="#services">Services</a></li>
               <li><a href="#results">Results</a></li>
+              <li><a href="#team">The chairs</a></li>
               <li><a href="#stories">Reviews</a></li>
               <li><a href="#about">About</a></li>
             </ul>
@@ -427,6 +566,13 @@
 
     <div class="site-footer__wordmark" aria-hidden="true">MAISON<span>.</span></div>
   </footer>
+
+  <!-- mobile-only booking bar: revealed once the hero scrolls away, hidden again
+       when the booking form itself is on screen -->
+  <a class="bookbar" href="#book" data-bookbar hidden>
+    <span class="bookbar__label">Book an appointment</span>
+    <span class="bookbar__meta">Tue&ndash;Sat, 9&ndash;6</span>
+  </a>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
