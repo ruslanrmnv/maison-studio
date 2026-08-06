@@ -44,6 +44,25 @@
   }
 }
 
+/* Lenis smooth scroll — official companion rules. When Lenis drives the
+   scroll it tags <html> with .lenis; native smooth-behavior must yield
+   or the two easings fight over every programmatic scroll. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* Masked/wipe reveals: the resting state is fully visible, so if GSAP
+   never loads the content simply sits there un-animated. */
+[data-reveal-mask],
+[data-reveal-wipe] {
+  clip-path: inset(0% 0% 0% 0%);
+}
+
 body {
   margin: 0;
   background: var(--cream);

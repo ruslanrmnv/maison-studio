@@ -4,8 +4,49 @@
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+/* Lenis smooth scroll — the wheel gets a short lerp so the page glides
+   instead of stepping. Touch stays native (Lenis default), reduced-motion
+   skips it entirely, and a failed CDN just means normal scrolling. */
+let lenis = null;
+if (window.Lenis && !reduceMotion) {
+  lenis = new Lenis({ lerp: 0.11 });
+  // CSS scroll-behavior would double-ease every anchor jump under Lenis
+  document.documentElement.style.scrollBehavior = "auto";
+
+  if (window.gsap) {
+    // one clock: Lenis rides GSAP's ticker so scrub tweens never drift a frame
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+  } else {
+    const raf = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  }
+
+  // in-page anchors ride the same easing; focus moves with the scroll
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    const id = link.getAttribute("href");
+    if (id.length < 2) return; // "#" placeholders (social links)
+    link.addEventListener("click", (event) => {
+      const target = document.querySelector(id);
+      if (!target) return;
+      event.preventDefault();
+      history.pushState(null, "", id);
+      lenis.scrollTo(target, {
+        onComplete: () => {
+          target.setAttribute("tabindex", "-1");
+          target.focus({ preventScroll: true });
+        },
+      });
+    });
+  });
+}
+
 if (window.gsap && !reduceMotion) {
   gsap.registerPlugin(ScrollTrigger);
+  if (lenis) lenis.on("scroll", ScrollTrigger.update);
 
   const hero = gsap.timeline({ defaults: { ease: "power3.out" } });
 
@@ -52,20 +93,75 @@ if (window.gsap && !reduceMotion) {
       0.1
     );
 
-  // Scroll reveals: each group's [data-reveal] children rise in once, staggered
+  // The about photo cluster drifts at three speeds — desktop only, where the
+  // floats are absolutely positioned and free air absorbs the movement.
+  // Created BEFORE the reveal timelines: matchMedia's revert restores the
+  // inline styles it saw at creation, and the wipe's from-state (scale 1.06)
+  // must not be part of that snapshot.
+  gsap.matchMedia().add("(min-width: 900px)", () => {
+    [[".about__float--a", -28], [".about__float--b", 22], [".about__float--c", -16]]
+      .forEach(([float, drift]) => {
+        gsap.to(float, {
+          y: drift,
+          ease: "none",
+          scrollTrigger: { trigger: ".about", start: "top bottom", end: "bottom top", scrub: true },
+        });
+      });
+  });
+
+  // Scroll reveals: one timeline per group, three voices —
+  //   [data-reveal-mask]  titles wipe up out of their own baseline
+  //   [data-reveal-wipe]  photos uncover bottom-to-top while settling from a slight zoom
+  //   [data-reveal]       everything else rises in, staggered
   gsap.utils.toArray("[data-reveal-group]").forEach((group) => {
-    gsap.from(group.querySelectorAll("[data-reveal]"), {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-      stagger: 0.06,
-      scrollTrigger: {
-        trigger: group,
-        start: "top 80%",
-        once: true,
-      },
+    const masks = group.querySelectorAll("[data-reveal-mask]");
+    const wipes = group.querySelectorAll("[data-reveal-wipe]");
+    const rest = group.querySelectorAll("[data-reveal]");
+
+    const tl = gsap.timeline({
+      defaults: { ease: "power3.out" },
+      scrollTrigger: { trigger: group, start: "top 80%", once: true },
     });
+
+    if (masks.length) {
+      tl.from(masks, {
+        y: "0.85em",
+        clipPath: "inset(0% 0% 100% 0%)",
+        duration: 0.9,
+      }, 0);
+    }
+    if (wipes.length) {
+      tl.from(wipes, {
+        clipPath: "inset(100% 0% 0% 0%)",
+        scale: 1.06,
+        duration: 1.05,
+        ease: "power2.out",
+        stagger: 0.12,
+      }, 0.1);
+    }
+    if (rest.length) {
+      tl.from(rest, {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.06,
+      }, masks.length ? 0.12 : 0);
+    }
+  });
+
+  // Scroll depth — three scrub-driven drifts, transform-only.
+  // The hero photo trails the scroll a touch, so the page reads as layered.
+  gsap.to(".hero__media", {
+    yPercent: 6,
+    ease: "none",
+    scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
+  });
+
+  // The cropped footer wordmark rises into its crop as the page bottoms out
+  gsap.from(".site-footer__wordmark", {
+    yPercent: 45,
+    ease: "none",
+    scrollTrigger: { trigger: ".site-footer", start: "top bottom", end: "bottom bottom", scrub: true },
   });
 }
 

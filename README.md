@@ -25,9 +25,12 @@ like a specific salon owner wrote it — exact durations, exact prices, no upsel
 - **A price-first services menu** on a dark, film-grained break — every row shows
   the exact minutes and price. Terracotta wipe on hover; a persistent terracotta
   cue on touch, where there's no hover to reveal it.
-- **Motion that fails safe** — GSAP scroll and load reveals built with `gsap.from`,
-  so if the CDN or JS fails the content is still visible. All of it respects
-  `prefers-reduced-motion`.
+- **Motion that fails safe** — Lenis smooth scroll plus GSAP scroll choreography:
+  masked title reveals, bottom-to-top photo wipes, and three scrub-driven
+  parallax layers (hero photo, about cluster, footer wordmark). Everything is
+  built with `gsap.from` and a visible resting state, so if a CDN or JS fails
+  the content simply sits there un-animated. All of it respects
+  `prefers-reduced-motion`, and touch scrolling stays native.
 
 ## Researched against real salons, not templates
 
