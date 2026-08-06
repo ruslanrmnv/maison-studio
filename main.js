@@ -9,7 +9,10 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
    skips it entirely, and a failed CDN just means normal scrolling. */
 let lenis = null;
 if (window.Lenis && !reduceMotion) {
-  lenis = new Lenis({ lerp: 0.11 });
+  // lerp 0.075: each frame closes 7.5% of the remaining distance — the page
+  // keeps gliding for a beat after the wheel stops. Lower reads as "floaty",
+  // higher as "stiff"; this sits at the soft edge of the editorial range.
+  lenis = new Lenis({ lerp: 0.075 });
   // CSS scroll-behavior would double-ease every anchor jump under Lenis
   document.documentElement.style.scrollBehavior = "auto";
 

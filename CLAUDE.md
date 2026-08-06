@@ -49,7 +49,7 @@ Container 1200px; section padding 120–160px desktop; hairlines `1px rgba(30,26
 
 GSAP + ScrollTrigger from CDN. Vanilla JS, no build step. Reuse dental-demo patterns where they fit.
 
-- Smooth scroll: Lenis from CDN (lerp ~0.11) — wheel glides, touch stays native, in-page anchors ride the same easing (with focus moved to the target). Grounded in real beauty businesses (Ceremonia runs Lenis; Hershesons uses Locomotive-style scroll). Progressive enhancement: CDN failure or reduced-motion = plain native scroll. Do NOT remove.
+- Smooth scroll: Lenis from CDN (lerp ~0.075 — soft edge of the editorial range) — wheel glides, touch stays native, in-page anchors ride the same easing (with focus moved to the target). Grounded in real beauty businesses (Ceremonia runs Lenis; Hershesons uses Locomotive-style scroll). Progressive enhancement: CDN failure or reduced-motion = plain native scroll. Do NOT remove.
 - Scroll reveals, three voices per section: section titles wipe up out of a clip mask (`inset(0 0 100% 0)`→0 + small y); photos uncover bottom-to-top (clip wipe + settle from scale 1.06); everything else fades + rises (40px), 60ms stagger, at 20% viewport, once. Base CSS state is fully visible — clip masks exist only as `gsap.from` values.
 - Scroll depth (scrub, transform-only): hero photo trails at ~6%; about floats drift at three speeds (desktop only, via `gsap.matchMedia` — create these BEFORE the reveal tweens or its revert snapshots the wipe's from-state); footer wordmark rises into its bottom crop.
 - Hero: masked line reveal for both headline lines (translateY 100%→0, stagger 100ms, power3.out); hero photo settles 1.06→1; micro-tags fade in one by one after.
