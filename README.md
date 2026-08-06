@@ -3,7 +3,7 @@
 A landing page for a fictional hair salon. Portfolio piece — built to look like a
 paying client's site, not a template.
 
-**Live:** https://maison-studio-476.netlify.app
+**Live:** https://mmaison-studio.netlify.app
 
 ## The brief
 
