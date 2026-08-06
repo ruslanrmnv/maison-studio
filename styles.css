@@ -164,26 +164,32 @@ ul {
   transform: translateX(-2px);
 }
 
-/* dark pill "Contact Us" with arrow chip */
+/* Outlined booking pill with arrow chip. Deliberately NOT filled: the hero
+   carries the one solid CTA, and two identical ink pills on the same screen
+   split the attention they are meant to concentrate. Booking still stays
+   permanently in reach — same size, same place, quieter voice. */
 .contact-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
   min-height: 44px;
   padding: 0 0.5rem 0 1.35rem;
+  border: 1px solid var(--hairline);
   border-radius: 999px;
-  background: var(--ink);
-  color: var(--on-dark);
+  background: transparent;
+  color: var(--ink);
   text-decoration: none;
   font-size: var(--size-label);
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  transition: background-color 250ms ease;
+  transition: border-color 250ms ease, color 250ms ease;
 }
 
+/* border only — terracotta text measures 4.29:1 on cream and fails 4.5:1
+   at this 11px size, so the hover cue stays in the hairline */
 .contact-pill:hover {
-  background: var(--terracotta);
+  border-color: var(--ink);
 }
 
 .contact-pill__arrow {
@@ -192,8 +198,8 @@ ul {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--cream);
-  color: var(--ink);
+  background: var(--ink);
+  color: var(--cream);
   transition: transform 250ms ease;
 }
 
