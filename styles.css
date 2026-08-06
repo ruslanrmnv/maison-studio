@@ -245,10 +245,59 @@ ul {
   color: var(--ink-70);
 }
 
-.hero__meta {
+/* CTA row — the hero must close its own pitch: action + proof on one line,
+   bottom-anchored to the photo's baseline like the meta line it replaced */
+.hero__cta {
   margin: clamp(1.5rem, 3vw, 2rem) 0 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+}
+
+.hero__book {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 52px;
+  padding: 0 0.6rem 0 1.6rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--on-dark);
+  text-decoration: none;
   font-size: var(--size-label);
-  letter-spacing: 0.04em;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background-color 250ms ease;
+}
+
+.hero__book:hover {
+  background: var(--terracotta);
+}
+
+.hero__book-arrow {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--ink);
+  transition: transform 250ms ease;
+}
+
+.hero__book:hover .hero__book-arrow {
+  transform: rotate(45deg);
+}
+
+.hero__proof {
+  margin: 0;
+  font-size: var(--size-label);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.9;
   color: var(--ink-muted);
 }
 

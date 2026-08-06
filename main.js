@@ -78,9 +78,9 @@ if (window.gsap && !reduceMotion) {
       { y: 16, opacity: 0, duration: 0.5, stagger: 0.08 },
       "-=0.75"
     )
-    // booking line settles in at the bottom of the column
+    // CTA row settles in at the bottom of the column
     .from(
-      ".hero__meta",
+      ".hero__cta",
       { y: 12, opacity: 0, duration: 0.5 },
       "-=0.45"
     )
