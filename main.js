@@ -255,12 +255,27 @@ document.querySelectorAll("[data-gallery]").forEach((gallery) => {
   const afterImg = compare.querySelector(".compare__img--after");
   const caption = gallery.querySelector(".results__caption");
 
+  /* Every photograph on the page ships in the same width ladder, and the markup
+     names the widest file. Swapping src alone would leave the previous example's
+     srcset in place, so the browser would keep choosing a rendition of a photo
+     that is no longer on screen — rebuild both together. */
+  const WIDTHS = [300, 500, 700];
+  const NATURAL = 900;
+  const SIZES = "(min-width: 1000px) 550px, 92vw";
+  const srcsetFor = (src) =>
+    WIDTHS.map((w) => `${src.replace(/\.webp$/, "")}-${w}.webp ${w}w`).join(", ") +
+    `, ${src} ${NATURAL}w`;
+  const setPhoto = (img, src, alt) => {
+    img.sizes = SIZES;
+    img.srcset = srcsetFor(src);
+    img.src = src;
+    img.alt = alt;
+  };
+
   const show = (btn) => {
     buttons.forEach((b) => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
-    afterImg.src = btn.dataset.after;
-    afterImg.alt = btn.dataset.afterAlt;
-    beforeImg.src = btn.dataset.before;
-    beforeImg.alt = btn.dataset.beforeAlt;
+    setPhoto(afterImg, btn.dataset.after, btn.dataset.afterAlt);
+    setPhoto(beforeImg, btn.dataset.before, btn.dataset.beforeAlt);
     if (caption) caption.textContent = btn.dataset.caption;
     // start each new pair a touch right of centre so the divider doesn't bisect the face
     if (typeof compare.__setPos === "function") compare.__setPos(58);
@@ -271,10 +286,16 @@ document.querySelectorAll("[data-gallery]").forEach((gallery) => {
 
   // Warm the cache for the other examples once the browser is idle, so a
   // switch never flashes a half-loaded frame — without eager-loading up front.
+  // srcset and sizes go on first, or the warm-up fetches the full-size original
+  // and the visitor pays for four photographs they may never ask to see.
   const preload = () =>
     buttons.forEach((b) =>
       [b.dataset.before, b.dataset.after].forEach((src) => {
-        if (src) new Image().src = src;
+        if (!src) return;
+        const img = new Image();
+        img.sizes = SIZES;
+        img.srcset = srcsetFor(src);
+        img.src = src;
       })
     );
   if ("requestIdleCallback" in window) requestIdleCallback(preload);

@@ -6,11 +6,26 @@
   <title>MAISON Studio — Good hair, no guesswork</title>
   <meta name="description" content="MAISON Studio — a small hair salon that respects your time. Exact durations, exact prices, no upsell in the chair.">
 
-  <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400..500&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://maison.servicestudiobyruslan.com/">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- What the page looks like when someone pastes the link into a chat. -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="MAISON Studio">
+  <meta property="og:title" content="MAISON Studio — Good hair, no guesswork">
+  <meta property="og:description" content="A small hair salon that respects your time. Exact durations, exact prices, no upsell in the chair.">
+  <meta property="og:url" content="https://maison.servicestudiobyruslan.com/">
+  <meta property="og:image" content="https://maison.servicestudiobyruslan.com/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Both faces are self-hosted (see @font-face in styles.css). The two the
+       first screen sets — body text and the italic display — are preloaded so
+       they arrive alongside the stylesheet rather than after it. -->
+  <link rel="preload" href="assets/fonts/general-sans-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/bodoni-moda-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -130,6 +145,8 @@
         <figure class="hero__media">
           <img class="hero__photo"
                src="assets/hero.webp"
+               srcset="assets/hero-300.webp 300w, assets/hero-500.webp 500w, assets/hero-700.webp 700w, assets/hero.webp 932w"
+               sizes="(min-width: 1000px) 510px, 90vw"
                alt="A colourist painting a warm highlight through a sectioned strand of hair with a tint brush"
                width="1307" height="1682" fetchpriority="high">
         </figure>
@@ -157,12 +174,18 @@
         <div class="about__cluster" aria-hidden="true">
           <img class="about__float about__float--a"
                src="assets/about-foils.webp"
+               srcset="assets/about-foils-300.webp 300w, assets/about-foils-500.webp 500w, assets/about-foils-700.webp 700w, assets/about-foils.webp 900w"
+               sizes="(min-width: 1000px) 310px, 185px"
                alt="" width="1536" height="2048" loading="lazy" data-reveal-wipe>
           <img class="about__float about__float--b"
                src="assets/about-tools.webp"
+               srcset="assets/about-tools-300.webp 300w, assets/about-tools-500.webp 500w, assets/about-tools-700.webp 700w, assets/about-tools.webp 900w"
+               sizes="(min-width: 1000px) 310px, 185px"
                alt="" width="1536" height="2048" loading="lazy" data-reveal-wipe>
           <img class="about__float about__float--c"
                src="assets/about-texture.webp"
+               srcset="assets/about-texture-300.webp 300w, assets/about-texture-500.webp 500w, assets/about-texture-700.webp 700w, assets/about-texture.webp 900w"
+               sizes="(min-width: 1000px) 310px, 185px"
                alt="" width="1536" height="2048" loading="lazy" data-reveal-wipe>
         </div>
       </div>
@@ -181,7 +204,10 @@
         <ul class="services__list">
           <li class="service" data-reveal>
             <a class="service__row" href="#book">
-              <span class="service__fill" aria-hidden="true"><img src="assets/service-01-cut.webp" alt="" width="1536" height="2048" loading="lazy"></span>
+              <span class="service__fill" aria-hidden="true"><img src="assets/service-01-cut-wide-900.webp" alt=""
+                    srcset="assets/service-01-cut-wide-450.webp 450w, assets/service-01-cut-wide-900.webp 900w"
+                    sizes="(min-width: 1000px) 1104px, 100vw"
+                    width="900" height="180" loading="lazy"></span>
               <span class="service__num">(01)</span>
               <span class="service__name">Precision Cut</span>
               <span class="service__meta">60 min &mdash; from $75</span>
@@ -192,7 +218,10 @@
           </li>
           <li class="service" data-reveal>
             <a class="service__row" href="#book">
-              <span class="service__fill" aria-hidden="true"><img src="assets/service-02-balayage.webp" alt="" width="1536" height="2048" loading="lazy"></span>
+              <span class="service__fill" aria-hidden="true"><img src="assets/service-02-balayage-wide-900.webp" alt=""
+                    srcset="assets/service-02-balayage-wide-450.webp 450w, assets/service-02-balayage-wide-900.webp 900w"
+                    sizes="(min-width: 1000px) 1104px, 100vw"
+                    width="900" height="180" loading="lazy"></span>
               <span class="service__num">(02)</span>
               <span class="service__name">Balayage</span>
               <span class="service__meta">165 min &mdash; from $190</span>
@@ -203,7 +232,10 @@
           </li>
           <li class="service" data-reveal>
             <a class="service__row" href="#book">
-              <span class="service__fill" aria-hidden="true"><img src="assets/service-03-gloss.webp" alt="" width="1536" height="2048" loading="lazy"></span>
+              <span class="service__fill" aria-hidden="true"><img src="assets/service-03-gloss-wide-900.webp" alt=""
+                    srcset="assets/service-03-gloss-wide-450.webp 450w, assets/service-03-gloss-wide-900.webp 900w"
+                    sizes="(min-width: 1000px) 1104px, 100vw"
+                    width="900" height="180" loading="lazy"></span>
               <span class="service__num">(03)</span>
               <span class="service__name">Gloss &amp; Toner</span>
               <span class="service__meta">40 min &mdash; from $55</span>
@@ -214,7 +246,10 @@
           </li>
           <li class="service" data-reveal>
             <a class="service__row" href="#book">
-              <span class="service__fill" aria-hidden="true"><img src="assets/service-04-keratin.webp" alt="" width="1536" height="2048" loading="lazy"></span>
+              <span class="service__fill" aria-hidden="true"><img src="assets/service-04-keratin-wide-900.webp" alt=""
+                    srcset="assets/service-04-keratin-wide-450.webp 450w, assets/service-04-keratin-wide-900.webp 900w"
+                    sizes="(min-width: 1000px) 1104px, 100vw"
+                    width="900" height="180" loading="lazy"></span>
               <span class="service__num">(04)</span>
               <span class="service__name">Keratin Smoothing</span>
               <span class="service__meta">120 min &mdash; from $170</span>
@@ -225,7 +260,10 @@
           </li>
           <li class="service" data-reveal>
             <a class="service__row" href="#book">
-              <span class="service__fill" aria-hidden="true"><img src="assets/service-05-root-color.webp" alt="" width="1536" height="2048" loading="lazy"></span>
+              <span class="service__fill" aria-hidden="true"><img src="assets/service-05-root-color-wide-900.webp" alt=""
+                    srcset="assets/service-05-root-color-wide-450.webp 450w, assets/service-05-root-color-wide-900.webp 900w"
+                    sizes="(min-width: 1000px) 1104px, 100vw"
+                    width="900" height="180" loading="lazy"></span>
               <span class="service__num">(05)</span>
               <span class="service__name">Root Colour</span>
               <span class="service__meta">90 min &mdash; from $120</span>
@@ -296,10 +334,14 @@
           <div class="compare" data-compare style="--pos: 58%">
             <img class="compare__img compare__img--after"
                  src="assets/results-balayage-after.webp"
+                 srcset="assets/results-balayage-after-300.webp 300w, assets/results-balayage-after-500.webp 500w, assets/results-balayage-after-700.webp 700w, assets/results-balayage-after.webp 900w"
+                 sizes="(min-width: 1000px) 550px, 92vw"
                  alt="A client after a balayage — a darker base with soft blonde highlights, smoothed into a glossy blowout"
                  width="1467" height="1956" loading="lazy">
             <img class="compare__img compare__img--before"
                  src="assets/results-balayage-before.webp"
+                 srcset="assets/results-balayage-before-300.webp 300w, assets/results-balayage-before-500.webp 500w, assets/results-balayage-before-700.webp 700w, assets/results-balayage-before.webp 900w"
+                 sizes="(min-width: 1000px) 550px, 92vw"
                  alt="The same client before her appointment — long hair grown out to a flat, dry, undone blonde"
                  width="1719" height="2292" loading="lazy">
 
@@ -338,6 +380,8 @@
           <li class="team__member">
             <figure class="team__figure">
               <img class="team__photo" src="assets/stylist-amara.webp"
+                   srcset="assets/stylist-amara-300.webp 300w, assets/stylist-amara-500.webp 500w, assets/stylist-amara.webp 760w"
+                   sizes="(min-width: 1000px) 370px, 95vw"
                    alt="Amara, director at MAISON Studio"
                    width="760" height="950" loading="lazy" data-reveal-wipe>
               <figcaption class="team__num" data-reveal>(01)</figcaption>
@@ -351,6 +395,8 @@
           <li class="team__member">
             <figure class="team__figure">
               <img class="team__photo" src="assets/stylist-nell.webp"
+                   srcset="assets/stylist-nell-300.webp 300w, assets/stylist-nell-500.webp 500w, assets/stylist-nell.webp 760w"
+                   sizes="(min-width: 1000px) 370px, 95vw"
                    alt="Nell, senior stylist at MAISON Studio"
                    width="760" height="950" loading="lazy" data-reveal-wipe>
               <figcaption class="team__num" data-reveal>(02)</figcaption>
@@ -364,6 +410,8 @@
           <li class="team__member">
             <figure class="team__figure">
               <img class="team__photo" src="assets/stylist-tom.webp"
+                   srcset="assets/stylist-tom-300.webp 300w, assets/stylist-tom-500.webp 500w, assets/stylist-tom.webp 760w"
+                   sizes="(min-width: 1000px) 370px, 95vw"
                    alt="Tom, stylist at MAISON Studio"
                    width="760" height="950" loading="lazy" data-reveal-wipe>
               <figcaption class="team__num" data-reveal>(03)</figcaption>
@@ -452,25 +500,61 @@
     <div class="marquee" data-marquee aria-label="A few moments from the studio">
       <div class="marquee__viewport">
         <ul class="marquee__track" aria-hidden="true">
-          <li class="marquee__item"><img src="assets/hero.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/service-02-balayage.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/about-foils.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/service-01-cut.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/about-texture.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/service-05-root-color.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/about-tools.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/service-03-gloss.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/service-04-keratin.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/hero-300.webp" alt=""
+                    srcset="assets/hero-300.webp 300w, assets/hero-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-02-balayage-300.webp" alt=""
+                    srcset="assets/service-02-balayage-300.webp 300w, assets/service-02-balayage-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/about-foils-300.webp" alt=""
+                    srcset="assets/about-foils-300.webp 300w, assets/about-foils-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-01-cut-300.webp" alt=""
+                    srcset="assets/service-01-cut-300.webp 300w, assets/service-01-cut-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/about-texture-300.webp" alt=""
+                    srcset="assets/about-texture-300.webp 300w, assets/about-texture-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-05-root-color-300.webp" alt=""
+                    srcset="assets/service-05-root-color-300.webp 300w, assets/service-05-root-color-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/about-tools-300.webp" alt=""
+                    srcset="assets/about-tools-300.webp 300w, assets/about-tools-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-03-gloss-300.webp" alt=""
+                    srcset="assets/service-03-gloss-300.webp 300w, assets/service-03-gloss-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-04-keratin-300.webp" alt=""
+                    srcset="assets/service-04-keratin-300.webp 300w, assets/service-04-keratin-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
           <!-- duplicate set for a seamless loop -->
-          <li class="marquee__item"><img src="assets/hero.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/service-02-balayage.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/about-foils.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/service-01-cut.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/about-texture.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/service-05-root-color.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/about-tools.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/service-03-gloss.webp" alt="" width="176" height="220" loading="lazy"></li>
-          <li class="marquee__item"><img src="assets/service-04-keratin.webp" alt="" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/hero-300.webp" alt=""
+                    srcset="assets/hero-300.webp 300w, assets/hero-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-02-balayage-300.webp" alt=""
+                    srcset="assets/service-02-balayage-300.webp 300w, assets/service-02-balayage-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/about-foils-300.webp" alt=""
+                    srcset="assets/about-foils-300.webp 300w, assets/about-foils-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-01-cut-300.webp" alt=""
+                    srcset="assets/service-01-cut-300.webp 300w, assets/service-01-cut-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/about-texture-300.webp" alt=""
+                    srcset="assets/about-texture-300.webp 300w, assets/about-texture-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-05-root-color-300.webp" alt=""
+                    srcset="assets/service-05-root-color-300.webp 300w, assets/service-05-root-color-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/about-tools-300.webp" alt=""
+                    srcset="assets/about-tools-300.webp 300w, assets/about-tools-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-03-gloss-300.webp" alt=""
+                    srcset="assets/service-03-gloss-300.webp 300w, assets/service-03-gloss-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
+          <li class="marquee__item"><img src="assets/service-04-keratin-300.webp" alt=""
+                    srcset="assets/service-04-keratin-300.webp 300w, assets/service-04-keratin-500.webp 500w"
+                    sizes="185px" width="176" height="220" loading="lazy"></li>
         </ul>
       </div>
       <button class="marquee__toggle" type="button" data-marquee-toggle aria-pressed="false" aria-label="Pause the scrolling photos">
@@ -630,9 +714,13 @@
     <span class="bookbar__meta">Tue&ndash;Sat, 9&ndash;6</span>
   </a>
 
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <!-- Vendored rather than pulled from jsdelivr and cdnjs: two more origins to
+       resolve and connect to before the page can animate, and two more services
+       that have to stay up for a client's site to work. Same versions, served
+       from here. -->
+  <script src="vendor/lenis.min.js" defer></script>
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
   <script src="main.js" defer></script>
 </body>
 </html>
