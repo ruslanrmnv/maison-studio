@@ -6,7 +6,13 @@
    stylesheets standing between the visitor and the first painted word. On a
    phone that measured 1.14s of blocked rendering. They live here now, on the
    same origin as the page, and the two the first screen needs are preloaded in
-   the document head. */
+   the document head.
+
+   They are also subset to the glyphs this page renders, and Bodoni's variable
+   axes are trimmed to the slice this stylesheet actually reaches — 144 KB down
+   to 74 KB on the wire. assets/fonts/README.md carries the provenance and the
+   commands to regenerate them. Copy in a language these no longer cover is the
+   one way to break this; the README says which. */
 @font-face {
   font-family: "General Sans";
   src: url("assets/fonts/general-sans-400.woff2") format("woff2");
